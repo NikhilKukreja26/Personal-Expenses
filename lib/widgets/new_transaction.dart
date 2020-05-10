@@ -79,6 +79,8 @@ class _NewTransactionState extends State<NewTransaction> {
     });
   }
 
+  bool showIcon = false;
+
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
@@ -93,15 +95,25 @@ class _NewTransactionState extends State<NewTransaction> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: <Widget>[
+              showIcon
+                  ? FloatingActionButton(
+                      onPressed: () {},
+                      child: Icon(Icons.add),
+                    )
+                  : Container(),
               TextField(
                 controller: _titleController,
                 decoration: InputDecoration(
                   labelText: 'Title',
                 ),
                 onSubmitted: (_) => _submitData(),
-                // onChanged: (value) {
-                //   titleInput = value;
-                // },
+                onChanged: (value) {
+                  setState(() {
+                    _titleController.text == ""
+                        ? showIcon = false
+                        : showIcon = true;
+                  });
+                },
               ),
               TextField(
                 controller: _amountController,
