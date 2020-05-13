@@ -49,15 +49,15 @@ class _NewTransactionState extends State<NewTransaction> {
       return;
     }
     final enteredTitle = _titleController.text;
-    final enteredAmout = double.parse(_amountController.text);
+    final enteredAmount = double.parse(_amountController.text);
 
-    if (enteredTitle.isEmpty || enteredAmout < 0 || _selectedDate == null) {
+    if (enteredTitle.isEmpty || enteredAmount < 0 || _selectedDate == null) {
       return;
     }
 
     widget.addTransactionHandler(
       enteredTitle,
-      enteredAmout,
+      enteredAmount,
       _selectedDate,
     );
     Navigator.of(context).pop();
